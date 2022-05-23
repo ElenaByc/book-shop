@@ -1,0 +1,200 @@
+@font-face {
+    font-family: 'Georgia';
+    src: url("../assets/fonts/georgia-regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Arial';
+    src: url("../assets/fonts/arial-regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Arial Cursive';
+    src: url("../assets/fonts/arial-italic.ttf");
+    font-weight: 400;
+}
+
+:root {
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-light: #F6F6F6;
+    --color-dark: #302718;
+    --color-brown: #683B2b;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--color-light);
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.scrollblock {
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 35px;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+h2 {
+    font-size: 44px;
+    line-height: 57px;
+    color: var(--color-white);
+}
+
+h3 {
+    font-size: 35px;
+    line-height: 45px;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+}
+
+h4 {
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+}
+
+h5 {
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+
+}
+
+p {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-dark-xl);
+    margin: 0;
+    margin-bottom: 25px;
+}
+
+.button {
+    background-color: var(--color-primary);
+    border-radius: 100px;
+    padding: 15px 45px;
+    color: var(--color-dark-3xl);
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: var(--color-primary-light);
+}
+
+.circle-btn {
+    flex: 0 0 52px;
+    padding: 23px 19px;
+    width: 52px;
+    height: 52px;
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    border-radius: 100px;
+    color: var(--color-dark-3xl);
+}
+
+.circle-btn:hover {
+    background-color: var(--color-primary-light);
+    border: 2px solid var(--color-primary-light);
+    cursor: pointer;
+}
+
+.content-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.footer,
+.section {
+    width: 100%;
+    padding: 80px 40px 100px;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+    position: sticky;
+    padding: 60px 40px;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    width: 100%;
+    z-index: 1;
+}
+
+.header__logo {
+    background-image: ;
+}
+
+.header__title {
+    margin-bottom: 10px;
+}
+
+.header__subtitle {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+/* ---------- Main ---------- */
+.main {
+    height: calc(100vh - 400px);
+}
+
+/* ---------- Catalog Section ---------- */
+
+
+/* ---------- Footer ---------- */
+
+.footer {
+    background-image: url(../assets/images/books.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+}
