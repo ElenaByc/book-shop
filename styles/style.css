@@ -118,20 +118,15 @@ p {
 }
 
 
-section {
-    width: 100%;
-    padding: 40px;
-}
-
 /* ---------- Header ---------- */
 
 .header {
     position: sticky;
     top: 0;
     width: 100%;
-    padding: 20px 40px 7px;
+    padding: 10px 40px 7px;
     background-color: var(--color-light);
-    border-bottom: solid 5px var(--color-brown);
+    border-bottom: solid 3px var(--color-brown);
 
     display: flex;
     flex-direction: row;
@@ -142,13 +137,13 @@ section {
 
 .header__logo {
     display: flex;
-    column-gap: 10px;
+    column-gap: 20px;
     align-items: center;
 }
 
 .header__logo-img {
-    flex: 0 0 100px;
-    height: 120px;
+    flex: 0 0 70px;
+    height: 80px;
     background-image: url("../assets/icons/books.svg");
     background-position: center;
     background-size: contain;
@@ -156,35 +151,94 @@ section {
 }
 
 .header__title {
-    flex: 0 0 400px;
+    flex: 0 0 300px;
 }
 
 .header__title h1 {
     font-family: "Literata Bold";
-    font-size: 52px;
-    line-height: 64px;
-    letter-spacing: 0.03em;
+    font-size: 48px;
+    line-height: 54px;
+    letter-spacing: 0.02em;
     text-align: center;
 }
 
 .header__title h3 {
     font-family: "Literata Cursive";
-    font-size: 22px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 24px;
     text-align: center;
     color: var(--color-brown);
 }
 
-.header__cart {
-    flex: 0 0 80px;
-    height: 120px;
+.header__bag {
+    flex: 0 0 54px;
+    height: 80px;
     background-image: url("../assets/icons/shopping-bag.svg");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+
+/* ---------- Main ---------- */
+
+.main {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* ---------- Shopping Bag ---------- */
+
+.shopping-bag {
+    flex: 0 0 250px;
+    order: 2;
+    position: sticky;
+    top: 100px;
+    right: 0;
+    padding: 10px;
+    border-left: solid 3px var(--color-brown);
+    border-right: solid 3px var(--color-brown);
+    border-bottom: solid 3px var(--color-brown);
+}
+
+.shopping-bag h3 {
+    font-family: "Literata Cursive";
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: var(--color-brown);
+    margin-bottom: 20px;
+}
+
+.shopping-bag p {
+    text-align: center;
+    color: gray;
 }
 
 /* ---------- Catalog Section ---------- */
+
+.catalog {
+    order: 1;
+    width: 100%;
+    padding: 40px 20px;
+}
+
+h2 {
+    position: relative;
+}
+
+h2::before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 120px;
+    left: calc(50% - 60px);
+    bottom: -10px;
+    height: 3px;
+    background-color: var(--color-brown);
+}
+
 
 .books-container {
     margin: 0 auto;
@@ -202,12 +256,15 @@ section {
 .book-card {
     display: flex;
     flex-direction: column;
-    width: 200px;
-    height: 400px;
+    width: 150px;
+    height: 300px;
 }
 
 .book-cover {
     box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.3);
+    height: 180px;
+    width: auto;
+    margin: 0 auto;
     cursor: pointer;
 }
 
