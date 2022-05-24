@@ -1,18 +1,18 @@
 @font-face {
-    font-family: 'Georgia';
-    src: url("../assets/fonts/georgia-regular.ttf");
-    font-weight: 400;
+    font-family: 'Literata Bold';
+    src: url("../assets/fonts/Literata/static/Literata/Literata-Bold.ttf");
+    font-weight: 600;
 }
 
 @font-face {
-    font-family: 'Arial';
-    src: url("../assets/fonts/arial-regular.ttf");
-    font-weight: 400;
+    font-family: 'Literata Bold Italic';
+    src: url("../assets/fonts/Literata/static/Literata/Literata-BoldItalic.ttf");
+    font-weight: 600;
 }
 
 @font-face {
-    font-family: 'Arial Cursive';
-    src: url("../assets/fonts/arial-italic.ttf");
+    font-family: 'Literata Cursive';
+    src: url("../assets/fonts/Literata/static/Literata/Literata-Italic.ttf");
     font-weight: 400;
 }
 
@@ -48,47 +48,18 @@ a {
 
 h1,
 h2,
-h3,
-h4,
-h5 {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
+h3 {
+    text-align: center;
     color: var(--color-dark);
     margin: 0;
 }
 
-h1 {
-    font-size: 32px;
-    line-height: 35px;
-    letter-spacing: 0.06em;
-    text-align: center;
-}
-
 h2 {
-    font-size: 44px;
-    line-height: 57px;
-    color: var(--color-white);
-}
-
-h3 {
-    font-size: 35px;
-    line-height: 45px;
-    letter-spacing: 0.06em;
-    margin-bottom: 24px;
-}
-
-h4 {
-    font-size: 20px;
-    line-height: 23px;
-    letter-spacing: 0.06em;
-}
-
-h5 {
-    font-size: 15px;
-    line-height: 17px;
-    letter-spacing: 0.06em;
-
+    font-family: 'Literata Bold Italic';
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+    margin-bottom: 30px;
 }
 
 p {
@@ -97,7 +68,7 @@ p {
     font-weight: 400;
     font-size: 15px;
     line-height: 24px;
-    color: var(--color-dark-xl);
+    color: var(--color-dark);
     margin: 0;
     margin-bottom: 25px;
 }
@@ -138,56 +109,107 @@ p {
 }
 
 .content-wrapper {
-    max-width: 1280px;
+    max-width: 1440px;
+    min-height: 100vh;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.footer,
-.section {
+
+section {
     width: 100%;
-    padding: 80px 40px 100px;
+    padding: 40px;
 }
 
 /* ---------- Header ---------- */
 
 .header {
     position: sticky;
-    padding: 60px 40px;
-    background: transparent;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px 7px;
+    background-color: var(--color-light);
+    border-bottom: solid 5px var(--color-brown);
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-width: 1280px;
-    width: 100%;
-    z-index: 1;
+
 }
 
 .header__logo {
-    background-image: ;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.header__logo-img {
+    flex: 0 0 100px;
+    height: 120px;
+    background-image: url("../assets/icons/books.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .header__title {
-    margin-bottom: 10px;
+    flex: 0 0 400px;
 }
 
-.header__subtitle {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    letter-spacing: 0.1em;
+.header__title h1 {
+    font-family: "Literata Bold";
+    font-size: 52px;
+    line-height: 64px;
+    letter-spacing: 0.03em;
     text-align: center;
 }
 
-/* ---------- Main ---------- */
-.main {
-    height: calc(100vh - 400px);
+.header__title h3 {
+    font-family: "Literata Cursive";
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+    color: var(--color-brown);
+}
+
+.header__cart {
+    flex: 0 0 80px;
+    height: 120px;
+    background-image: url("../assets/icons/shopping-bag.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 /* ---------- Catalog Section ---------- */
 
+.books-container {
+    margin: 0 auto;
+    padding: 20px 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 400px;
+}
+
+.book-cover {
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
 
 /* ---------- Footer ---------- */
 
