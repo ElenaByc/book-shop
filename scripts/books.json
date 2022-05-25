@@ -43,28 +43,28 @@
     },
     {
         "author": "Bradley Meck Alex Young, Mike Cantelon",
-        "imageLink": "NodeJS_in_Action.jpg",
+        "image": "NodeJS_in_Action.jpg",
         "title": "Node.js in Action",
         "price": 38,
         "description": "Node.js in Action, Second Edition is a thoroughly revised book based on the best-selling first edition. It starts at square one and guides you through all the features, techniques, and concepts you'll need to build production-quality Node applications."
     },
     {
         "author": "Alex Banks, Eve Porcello",
-        "imageLink": "AlexBanks_EvePorcello_Learning_React.jpg",
+        "image": "AlexBanks_EvePorcello_Learning_React.jpg",
         "title": "Learning React, 2nd Edition",
         "price": 25,
         "description": "If you want to learn how to build efficient React applications, this is your book. Ideal for web developers and software engineers who understand how JavaScript, CSS, and HTML work in the browser, this updated edition provides best practices and patterns for writing modern React code. No prior knowledge of React or functional JavaScript is necessary."
     },
     {
         "author": "Kyle Simpson",
-        "imageLink": "KyleSimpson_You_Dont_Know_JS_Yet_Get_Started.jpg",
+        "image": "KyleSimpson_You_Dont_Know_JS_Yet_Get_Started.jpg",
         "title": "You Don't Know JS Yet: Get Started",
         "price": 26,
         "description": "It seems like there's never been as much widespread desire before for a better way to deeply learn the fundamentals of JavaScript. But with a million blogs, books, and videos out there, just where do you START? Look no further!"
     },
     {
         "author": "John Resig, Bear Bibeault",
-        "imageLink": "JohnResig_BearBibeault_Secrets_of_the_JavaScript_Ninja.jpg",
+        "image": "JohnResig_BearBibeault_Secrets_of_the_JavaScript_Ninja.jpg",
         "title": "Secrets of the JavaScript Ninja",
         "price": 33,
         "description": "Secrets of the Javascript Ninja takes you on a journey towards mastering modern JavaScript development in three phases: design, construction, and maintenance. Written for JavaScript developers with intermediate-level skills, this book will give you the knowledge you need to create a cross-browser JavaScript library from the ground up."

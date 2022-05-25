@@ -59,7 +59,7 @@ h2 {
     font-weight: 600;
     font-size: 36px;
     line-height: 42px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 p {
@@ -112,9 +112,6 @@ p {
     max-width: 1440px;
     min-height: 100vh;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 
@@ -132,7 +129,6 @@ p {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .header__logo {
@@ -180,7 +176,6 @@ p {
     cursor: pointer;
 }
 
-
 /* ---------- Main ---------- */
 
 .main {
@@ -224,21 +219,13 @@ p {
     padding: 40px 20px;
 }
 
-h2 {
-    position: relative;
-}
-
-h2::before {
-    position: absolute;
-    display: block;
-    content: "";
-    width: 120px;
-    left: calc(50% - 60px);
-    bottom: -10px;
+.title-line {
+    width: 100px;
+    margin: 0 auto;
     height: 3px;
     background-color: var(--color-brown);
+    margin-bottom: 30px;
 }
-
 
 .books-container {
     margin: 0 auto;
@@ -264,7 +251,7 @@ h2::before {
     box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.3);
     height: 180px;
     width: auto;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     cursor: pointer;
 }
 
