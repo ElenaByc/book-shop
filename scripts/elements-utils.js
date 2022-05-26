@@ -2,7 +2,7 @@ export function createElement(elemType, classNames, innerText) {
 	const elem = document.createElement(elemType);
 	Array.isArray(classNames) ? elem.classList.add(...classNames) : elem.classList.add(classNames);
 	if (innerText) {
-		elem.innerText = innerText;
+		elem.innerHTML = innerText;
 	}
 	return elem;
 }
