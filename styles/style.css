@@ -1,23 +1,42 @@
 @font-face {
     font-family: 'Literata Bold';
-    src: url("../assets/fonts/Literata/static/Literata/Literata-Bold.ttf");
+    src: url("../assets/fonts/Literata-Bold.ttf");
     font-weight: 600;
 }
 
 @font-face {
     font-family: 'Literata Bold Italic';
-    src: url("../assets/fonts/Literata/static/Literata/Literata-BoldItalic.ttf");
+    src: url("../assets/fonts/Literata-BoldItalic.ttf");
     font-weight: 600;
 }
 
 @font-face {
-    font-family: 'Literata Cursive';
-    src: url("../assets/fonts/Literata/static/Literata/Literata-Italic.ttf");
+    font-family: 'Literata Italic';
+    src: url("../assets/fonts/Literata-Italic.ttf");
     font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Literata';
+    src: url("../assets/fonts/");
+    font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Inter Bold';
+	src: url("../assets/fonts/Inter-Bold.ttf");
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: 'Inter';
+	src: url("../assets/fonts/Inter-Regular.ttf");
+	font-weight: 400;
 }
 
 :root {
     --color-black: #000000;
+    --color-gray: #676767;
     --color-white: #ffffff;
     --color-light: #F6F6F6;
     --color-dark: #302718;
@@ -63,7 +82,7 @@ h2 {
 }
 
 p {
-    font-family: 'Arial';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -74,21 +93,25 @@ p {
 }
 
 .button {
-    background-color: var(--color-primary);
-    border-radius: 100px;
-    padding: 15px 45px;
-    color: var(--color-dark-3xl);
-    font-family: 'Georgia';
-    font-style: normal;
+    background-color: var(--color-light);
+    padding: 5px 10px;
+    border: solid 2px var(--color-brown);
+    border-radius: 5px;
+    color: var(--color-dark);
+    font-family: 'Inter';
     font-weight: 400;
-    font-size: 17px;
-    line-height: 22px;
-    letter-spacing: 0.06em;
+    font-size: 14px;
+    line-height: 18px;
     text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 115px;
 }
 
 .button:hover {
-    background-color: var(--color-primary-light);
+    border: solid 2px var(--color-dark);
+    font-weight: 600;
+    font-size: 16px;
 }
 
 .circle-btn {
@@ -113,7 +136,6 @@ p {
     min-height: 100vh;
     margin: 0 auto;
 }
-
 
 /* ---------- Header ---------- */
 
@@ -159,7 +181,7 @@ p {
 }
 
 .header__title h3 {
-    font-family: "Literata Cursive";
+    font-family: "Literata Italic";
     font-size: 20px;
     line-height: 24px;
     text-align: center;
@@ -198,7 +220,7 @@ p {
 }
 
 .shopping-bag h3 {
-    font-family: "Literata Cursive";
+    font-family: "Literata Italic";
     font-size: 18px;
     line-height: 22px;
     text-align: center;
@@ -243,16 +265,60 @@ p {
 .book-card {
     display: flex;
     flex-direction: column;
-    width: 150px;
-    height: 300px;
+    align-items: center;
+    justify-content: flex-start;
+    row-gap: 7px;
+    width: 200px;
+    height: 400px;
 }
 
 .book-cover {
     box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.3);
-    height: 180px;
+    height: 200px;
     width: auto;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
     cursor: pointer;
+}
+
+.book-title {
+    font-family: 'Inter Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    color: var(--color-dark);
+    text-align: center;
+}
+
+.book-author {
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    color: var(--color-brown);
+    text-align: center;
+}
+
+.book-price {
+    font-family: 'Literata Italic';
+    font-style: italic;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: var(--color-dark);
+    text-align: center;
+}
+
+.book-price span {
+    font-family: 'Literata Bold Italic';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: var(--color-dark);
 }
 
 /* ---------- Footer ---------- */

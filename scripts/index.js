@@ -80,7 +80,7 @@ function addBookCard(book, container) {
 	addNewImageElement(card, "book-cover", book.image, book.title);
 	addNewElement(card, "h4", "book-title", book.title);
 	addNewElement(card, "h4", "book-author", book.author);
-	addNewElement(card, "h4", "book-price", `Price: $${book.price}`);
+	addNewElement(card, "h4", "book-price", `Price: <span>$${book.price}</span>`);
 	addNewElement(card, "div", "button", "Show more");
 	addNewElement(card, "div", "button", "Add to bag");
 	container.appendChild(card);
