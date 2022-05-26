@@ -114,23 +114,6 @@ p {
     font-size: 16px;
 }
 
-.circle-btn {
-    flex: 0 0 52px;
-    padding: 23px 19px;
-    width: 52px;
-    height: 52px;
-    background-color: transparent;
-    border: 2px solid var(--color-primary);
-    border-radius: 100px;
-    color: var(--color-dark-3xl);
-}
-
-.circle-btn:hover {
-    background-color: var(--color-primary-light);
-    border: 2px solid var(--color-primary-light);
-    cursor: pointer;
-}
-
 .content-wrapper {
     max-width: 1440px;
     min-height: 100vh;
@@ -319,6 +302,86 @@ p {
     line-height: 20px;
     letter-spacing: 0.01em;
     color: var(--color-dark);
+}
+
+/* ---------- Popup Window ---------- */
+
+.popup-shadow {
+    opacity: 0;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 1s;
+    background-color: rgba(41, 41, 41, 0.6);
+}
+
+.popup-shadow.active {
+    opacity: 1;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+.popup {
+    display: none;
+    transition: all 1s ease 0s;
+    background-color: var(--color-light);
+    border-radius: 9px;
+}
+
+.popup.open {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    left: calc((100vw - 900px) / 2);
+    top: calc((100vh - 500px) / 2);
+    width: 900px;
+    height: 500px;
+    z-index: 2;
+}
+
+.close {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--color-black);
+    border-radius: 9px;
+    background-image: url(../assets/icons/close.svg);
+    filter: invert(25%) sepia(5%) saturate(4891%) hue-rotate(329deg) brightness(95%) contrast(90%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15px 15px;
+    position: fixed;
+    left: calc((100vw + 900px) / 2 - 45px);
+    top: calc((100vh - 500px) / 2 + 5px);
+    transition: 0.3s;
+}
+
+.close:hover {
+    background-size: 17px 17px;
+    filter: invert(9%) sepia(10%) saturate(3108%) hue-rotate(359deg) brightness(90%) contrast(83%);
+    cursor: pointer;
+}
+
+.popup__img {
+    flex: 0 0 500px;
+    width: 500px;
+    height: 470px;
+    background-image: url(../assets/images/DavidHerman_Effective_JavaScript.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.popup__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
+    padding: 50px 20px 10px 30px;
+    color: var(--color-black);
 }
 
 /* ---------- Footer ---------- */
