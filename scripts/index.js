@@ -1,4 +1,14 @@
-import { createElement, addNewElement, addNewImageElement } from "./elements-utils.js";
+import {
+	createElement,
+	createElementWithId,
+	addNewElement,
+	addNewImageElement,
+	addNewButton,
+  addNewElementWithAction,
+} from "./elements-utils.js";
+
+const booksArray = [];
+let id = 0;
 
 document.addEventListener("DOMContentLoaded", createBooksCatalogPage());
 document.addEventListener("DOMContentLoaded", alertMsg());
@@ -42,8 +52,11 @@ function createMain() {
 	const main = createElement("main", "main");
 	const shoppingBag = createShoppingBag();
 	const catalogSection = createCatalogSection();
+	const popup = createPopupWindow();
 	main.appendChild(shoppingBag);
 	main.appendChild(catalogSection);
+  addNewElementWithAction(main, "div", "popup-shadow", togglePopup);
+	main.appendChild(popup);
 	return main;
 }
 
@@ -76,17 +89,67 @@ function createBooksCards() {
 }
 
 function addBookCard(book, container) {
-	const card = createElement("div", "book-card");
+	book.id = id;
+	booksArray.push(book);
+	const card = createElementWithId("div", "book-card", id);
 	addNewImageElement(card, "book-cover", book.image, book.title);
 	addNewElement(card, "h4", "book-title", book.title);
 	addNewElement(card, "h4", "book-author", book.author);
 	addNewElement(card, "h4", "book-price", `Price: <span>$${book.price}</span>`);
-	addNewElement(card, "div", "button", "Show more");
-	addNewElement(card, "div", "button", "Add to bag");
+	addNewButton(card, "Show more", togglePopup);
+	addNewButton(card, "Add to bag", addToBag);
 	container.appendChild(card);
+	id++;
+}
+
+function createPopupWindow() {
+	const popup = createElement("div", "popup");
+	addNewElement(popup, "div", "popup__img");
+	const content = createElement("div", "popup__content");
+	addNewElement(content, "h2", "popup__title", "Title");
+	addNewElement(content, "h3", "popup__author", "Author");
+	addNewElement(content, "p", "popup__description", "Description");
+	addNewElement(content, "h3", "popup__price", "Price");
+	popup.appendChild(content);
+  addNewElementWithAction(popup, "div", "close", togglePopup);
+	return popup;
 }
 
 function createFooter() {
 	const footer = createElement("footer", "footer");
 	return footer;
+}
+
+function togglePopup(event) {
+	const clickedCard = event.target.closest(".book-card");
+  const popup = document.getElementsByClassName("popup")[0];
+  const closeBtn = document.getElementsByClassName("close")[0];
+	const popupShadow = document.getElementsByClassName("popup-shadow")[0];
+  console.log(popup);
+	if (clickedCard) {
+		let book = booksArray.find((el) => el.id === Number(clickedCard.id));
+		console.log("POPUP");
+		console.log(book);
+    let img = popup.getElementsByClassName("popup__img")[0];
+		img.style.backgroundImage = `url(./assets/images/${book.image})`;
+    let title = popup.getElementsByClassName("popup__title")[0];
+		title.innerHTML = book.title;
+    let author = popup.getElementsByClassName("popup__author")[0];
+		author.innerHTML = book.author;
+    let description = popup.getElementsByClassName("popup__description")[0];
+		description.innerHTML = book.description;
+    let price = popup.getElementsByClassName("popup__price")[0];
+		price.innerHTML = `Price: <span>$${book.price}</span>`;
+    
+	}
+  popup.classList.toggle("open");
+  popupShadow.classList.toggle("active");
+}
+
+function addToBag(event) {
+	const clickedCard = event.target.closest(".book-card");
+	if (clickedCard) {
+		console.log("Add to Bag");
+		console.log(clickedCard);
+	}
 }
