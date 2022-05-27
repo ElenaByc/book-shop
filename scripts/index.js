@@ -4,10 +4,12 @@ import {
 	addNewElement,
 	addNewImageElement,
 	addNewButton,
-  addNewElementWithAction,
+	addNewElementWithAction,
 } from "./elements-utils.js";
 
 const booksArray = [];
+const bagArray = [];
+const countArray = [];
 let id = 0;
 
 document.addEventListener("DOMContentLoaded", createBooksCatalogPage());
@@ -38,8 +40,8 @@ function createHeader() {
 	const div = createElement("div", "header__logo");
 	const logo = createElement("div", "header__logo-img");
 	const title = createElement("div", "header__title");
-	addNewElement(title, "h1", [], "Books\u00A0Shop");
-	addNewElement(title, "h3", [], "Read... So you never feel alone");
+	addNewElement(title, "h1", "", "Books\u00A0Shop");
+	addNewElement(title, "h3", "", "Read... So you never feel alone");
 	div.appendChild(logo);
 	div.appendChild(title);
 	const bag = createElement("div", "header__bag");
@@ -55,7 +57,7 @@ function createMain() {
 	const popup = createPopupWindow();
 	main.appendChild(shoppingBag);
 	main.appendChild(catalogSection);
-  addNewElementWithAction(main, "div", "popup-shadow", togglePopup);
+	addNewElementWithAction(main, "div", "popup-shadow", togglePopup);
 	main.appendChild(popup);
 	return main;
 }
@@ -63,8 +65,8 @@ function createMain() {
 function createShoppingBag() {
 	//TODO: get current shopping bag from localStorage?
 	const bag = createElement("aside", "shopping-bag");
-	addNewElement(bag, "h3", [], "Your bag is empty");
-	addNewElement(bag, "p", [], "Drop books here\nor add them by clicking\n'Add to Bag` button");
+	addNewElement(bag, "h3", "", "Your bag is empty");
+	addNewElement(bag, "p", "", "Drop books here\nor add them by clicking\n'Add to Bag` button");
 	return bag;
 }
 
@@ -111,7 +113,7 @@ function createPopupWindow() {
 	addNewElement(content, "p", "popup__description", "Description");
 	addNewElement(content, "h3", "popup__price", "Price");
 	popup.appendChild(content);
-  addNewElementWithAction(popup, "div", "close", togglePopup);
+	addNewElementWithAction(popup, "div", "close", togglePopup);
 	return popup;
 }
 
@@ -122,34 +124,62 @@ function createFooter() {
 
 function togglePopup(event) {
 	const clickedCard = event.target.closest(".book-card");
-  const popup = document.getElementsByClassName("popup")[0];
-  const closeBtn = document.getElementsByClassName("close")[0];
+	const popup = document.getElementsByClassName("popup")[0];
 	const popupShadow = document.getElementsByClassName("popup-shadow")[0];
-  console.log(popup);
 	if (clickedCard) {
 		let book = booksArray.find((el) => el.id === Number(clickedCard.id));
-		console.log("POPUP");
-		console.log(book);
-    let img = popup.getElementsByClassName("popup__img")[0];
+		let img = popup.getElementsByClassName("popup__img")[0];
 		img.style.backgroundImage = `url(./assets/images/${book.image})`;
-    let title = popup.getElementsByClassName("popup__title")[0];
+		let title = popup.getElementsByClassName("popup__title")[0];
 		title.innerHTML = book.title;
-    let author = popup.getElementsByClassName("popup__author")[0];
+		let author = popup.getElementsByClassName("popup__author")[0];
 		author.innerHTML = book.author;
-    let description = popup.getElementsByClassName("popup__description")[0];
+		let description = popup.getElementsByClassName("popup__description")[0];
 		description.innerHTML = book.description;
-    let price = popup.getElementsByClassName("popup__price")[0];
+		let price = popup.getElementsByClassName("popup__price")[0];
 		price.innerHTML = `Price: <span>$${book.price}</span>`;
-    
 	}
-  popup.classList.toggle("open");
-  popupShadow.classList.toggle("active");
+	popup.classList.toggle("open");
+	popupShadow.classList.toggle("active");
 }
 
 function addToBag(event) {
 	const clickedCard = event.target.closest(".book-card");
 	if (clickedCard) {
-		console.log("Add to Bag");
-		console.log(clickedCard);
+		let book = booksArray.find((el) => el.id === Number(clickedCard.id));
+		bagArray.push(book);
+		console.log(bagArray);
+		displayShoppingBag();
 	}
 }
+
+function displayShoppingBag() {
+	const bag = document.getElementsByClassName("shopping-bag")[0];
+	let total = 0;
+	bag.innerHTML = "";
+	bagArray.forEach((book) => {
+    addItemToBag(book, bag);
+    total += Number(book.price);
+  });
+	addNewElement(bag, "div", "line");
+	let totalDiv = createElement("div", "total");
+	addNewElement(totalDiv, "h4", "", "Order total:");
+	addNewElement(totalDiv, "h4", "item__price", `$${total}.00`);
+	bag.appendChild(totalDiv);
+  const checkout_btn = createElement("a", "button", "Confirm order");
+  checkout_btn.setAttribute("href", "./checkout.html");
+  bag.appendChild(checkout_btn);
+}
+
+function addItemToBag(book, bag) {
+	const bookDiv = createElement("div", "shopping-bag__item");
+	addNewImageElement(bookDiv, "item__img", book.image, book.title);
+  const titleAndAuthor = createElement("div", "item__title-author");
+  addNewElement(titleAndAuthor, "h4", "item__title", book.title);
+  addNewElement(titleAndAuthor, "h4", "item__author", book.author);
+  bookDiv.appendChild(titleAndAuthor);
+  addNewElement(bookDiv, "h4", "item__price", `$${book.price}`);
+  addNewElement(bookDiv, "div", "remove");
+	bag.appendChild(bookDiv);
+}
+
