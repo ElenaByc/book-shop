@@ -1,6 +1,8 @@
 export function createElement(elemType, classNames, innerText) {
 	const elem = document.createElement(elemType);
-	Array.isArray(classNames) ? elem.classList.add(...classNames) : elem.classList.add(classNames);
+	if(classNames !== "") {
+    Array.isArray(classNames) ? elem.classList.add(...classNames) : elem.classList.add(classNames);
+  }
 	if (innerText) {
 		elem.innerHTML = innerText;
 	}
