@@ -15,24 +15,108 @@
     <div class="content-wrapper">
         <header class="header">
             <div class="header__logo">
-                <div class="header__logo-img"></div>
+                <a href="./index.html">
+                    <div class="header__logo-img"></div>
+                </a>
                 <div class="header__title">
                     <h1>Books&nbsp;Shop</h1>
-                    <h3>Read... So you never feel alone</hs>
+                    <h3>Read... So you never feel alone</h3>
                 </div>
             </div>
             <div class="header__bag"></div>
         </header>
 
-        <main class="main">
-
+        <main>
+            <section class="checkout">
+                <h2 class="form__title">Order form</h2>
+                <h2 class="message hide">Thank you for your order!</h2>
+                <h3 class="hide">Order details</h3>
+                <form id="checkout__form" name="checkout__form" action="#" method="post">
+                    <fieldset class="personal">
+                        <legend>Personal Information</legend>
+                        <div class="form__field">
+                            <label for="first_name">Name&nbsp;*</label>
+                            <input type="text" name="first_name" id="first_name"><br>
+                            <div class="error"></div>
+                        </div>
+                        <div class="form__field">
+                            <label for="last_name">Surname&nbsp;*</label>
+                            <input type="text" name="last_name" id="last_name"><br>
+                            <div class="error"></div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Delivery Date</legend>
+                        <div class="form__field">
+                            <label for="date">Please choose delivery date&nbsp;*</label>
+                            <input type="date" id="date" name="date" autocomplete="off" required>
+                            <div class="error"></div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="address">
+                        <legend>Delivery Address</legend>
+                        <div class="form__field">
+                            <label for="street">Street&nbsp;*</label>
+                            <input type="text" name="street" id="street"><br>
+                            <div class="error"></div>
+                        </div>
+                        <div class="form__field">
+                            <label for="street">House&nbsp;Number&nbsp;*</label>
+                            <input type="text" name="house" id="house"><br>
+                            <div class="error"></div>
+                        </div>
+                        <div class="form__field">
+                            <label for="street">Flat&nbsp;Number&nbsp;*</label>
+                            <input type="text" name="flat" id="flat"><br>
+                            <div class="error"></div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Payment Type</legend>
+                        <div class="form__field">
+                            <p>Please choose payment type&nbsp;*</p>
+                            <div class="payment">
+                                <div>
+                                    <input type="radio" id="cash" name="payment" value="cash">
+                                    <label for="cash">Cash</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="card" name="payment" value="card">
+                                    <label for="card">Card</label>
+                                </div>
+                            </div>
+                            <div class="error"></div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Gifts</legend>
+                        <div class="form__field">
+                            <p>Choose up to 2 gifts (optional):</p>
+                            <div class="gift">
+                                <input type="checkbox" id="gift" name="gift" value="gift">
+                                <label for="gift">Pack as a gift</label><br>
+                                <input type="checkbox" id="postcard" name="postcard" value="postcard">
+                                <label for="postcard">Add postcard</label><br>
+                                <input type="checkbox" id="discount" name="discount" value="discount">
+                                <label for="discount">provide 2% discount to the next time</label><br>
+                                <input type="checkbox" id="pen" name="pen" value="pen">
+                                <label for="pen">branded pen or pencil</label><br>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="buttons">
+                        <input type="submit" id="submit" value="Submit" class="button" disabled>
+                        <input type="reset" id="reset" value="Reset Fields" class="button">
+                    </div>
+                </form>
+            </section>
         </main>
 
         <footer class="footer">
 
         </footer>
     </div>
-    <script type="module" src="./scripts/index.js"></script>
+    <script src="./scripts/validateForm.js"></script>
 </body>
 
 </html>

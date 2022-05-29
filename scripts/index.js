@@ -13,7 +13,7 @@ const countArray = [];
 let id = 0;
 
 document.addEventListener("DOMContentLoaded", createBooksCatalogPage());
-document.addEventListener("DOMContentLoaded", alertMsg());
+// document.addEventListener("DOMContentLoaded", alertMsg());
 
 function alertMsg() {
 	const msg =
