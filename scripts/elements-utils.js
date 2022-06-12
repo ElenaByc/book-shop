@@ -31,7 +31,7 @@ export function addNewImageElement(parentElem, classNames, imageUrl, altTxt) {
 }
 
 export function addNewButton(parentElem, btnText, action) {
-  const btn = createElement("div", "button", btnText);
+  const btn = createElement("button", "button", btnText);
   btn.addEventListener("click", action);
   parentElem.appendChild(btn);
 }
