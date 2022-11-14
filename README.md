@@ -1,2 +1,2 @@
-# books-shop
+# book-shop
 RS School Stage1 Project
