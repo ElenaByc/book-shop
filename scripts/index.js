@@ -138,7 +138,7 @@ function togglePopup(event) {
 	if (clickedCard) {
 		let book = booksArray.find((el) => el.id === Number(clickedCard.id));
 		let img = popup.getElementsByClassName("popup__img")[0];
-		img.style.backgroundImage = `url(./assets/images/${book.image})`;
+		img.style.backgroundImage = `url(./assets/${book.image})`;
 		let title = popup.getElementsByClassName("popup__title")[0];
 		title.innerHTML = book.title;
 		let author = popup.getElementsByClassName("popup__author")[0];
