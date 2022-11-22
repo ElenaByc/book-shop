@@ -17,8 +17,15 @@ export function createElementWithId(elemType, classNames, id, innerText) {
 
 export function createImageElement(classNames, imageUrl, altTxt) {
 	const elem = createElement("img", classNames);
-	elem.setAttribute("src", `./assets/images/${imageUrl}`);
+	elem.setAttribute("src", `./assets/${imageUrl}`);
 	elem.setAttribute("alt", altTxt);
+	return elem;
+}
+
+export function createLinkElement(classNames, linkUrl) {
+	const elem = createElement("a", classNames);
+	elem.setAttribute("href", `${linkUrl}`);
+	elem.setAttribute("target", "_blank");
 	return elem;
 }
 

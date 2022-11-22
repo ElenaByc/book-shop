@@ -97,7 +97,6 @@ p {
     padding: 5px 10px;
     border: solid 2px var(--color-brown);
     border-radius: 5px;
-    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
     color: var(--color-dark);
     font-family: 'Inter';
@@ -110,7 +109,7 @@ p {
     width: 115px;
 }
 
-.button:enabled:hover{
+.button:enabled:hover {
     border: solid 2px var(--color-dark);
     box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
     font-weight: 600;
@@ -314,7 +313,7 @@ p {
 }
 
 .title-line {
-    width: 100px;
+    width: 120px;
     margin: 0 auto;
     height: 3px;
     background-color: var(--color-brown);
@@ -328,7 +327,8 @@ p {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 50px;
+    column-gap: 50px;
+    row-gap: 70px;
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -338,10 +338,11 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    row-gap: 7px;
+    justify-content: space-between;
+    /* row-gap: 7px; */
     width: 200px;
-    height: 400px;
+    height: 410px;
+    /* border: solid 1px var(--color-dark); */
 }
 
 .book-cover {
@@ -350,6 +351,13 @@ p {
     width: auto;
     margin: 0 auto 15px;
     cursor: pointer;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 110px;
 }
 
 .book-title {
@@ -361,6 +369,7 @@ p {
     letter-spacing: 0.01em;
     color: var(--color-dark);
     text-align: center;
+    /* height: 55px; */
 }
 
 .book-author {
@@ -391,6 +400,12 @@ p {
     line-height: 20px;
     letter-spacing: 0.01em;
     color: var(--color-dark);
+}
+
+.book-buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
 }
 
 /* ---------- Popup Window ---------- */
@@ -506,7 +521,7 @@ p {
 }
 
 #checkout__form fieldset {
-    font-family:  'Inter';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -571,9 +586,28 @@ p {
 /* ---------- Footer ---------- */
 
 .footer {
-    background-image: url(../assets/images/books.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 200px;
+    border-top: solid 3px var(--color-brown);
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer__year {
+    font-family: "Literata Italic";
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    color: var(--color-black);
+}
+
+.footer__github-logo {
+    width: 48px;
+    height: auto;
+}
+
+.footer__rss-logo {
+    width: 140px;
+    height: auto;
 }
