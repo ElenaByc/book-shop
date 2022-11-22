@@ -109,6 +109,12 @@ p {
     width: 115px;
 }
 
+.button:active {
+    transform: scale(0.9);
+}
+
+
+a.button:hover,
 .button:enabled:hover {
     border: solid 2px var(--color-dark);
     box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
