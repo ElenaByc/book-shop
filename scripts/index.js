@@ -5,6 +5,7 @@ import {
 	addNewImageElement,
 	addNewButton,
 	addNewElementWithAction,
+  createLinkElement,
 } from "./elements-utils.js";
 
 const booksArray = [];
@@ -88,11 +89,15 @@ function addBookCard(book, container) {
 	booksArray.push(book);
 	const card = createElementWithId("div", "book-card", id);
 	addNewImageElement(card, "book-cover", book.image, book.title);
-	addNewElement(card, "h4", "book-title", book.title);
-	addNewElement(card, "h4", "book-author", book.author);
-	addNewElement(card, "h4", "book-price", `Price: <span>$${book.price}</span>`);
-	addNewButton(card, "Show more", togglePopup);
-	addNewButton(card, "Add to bag", addToBag);
+  const details = createElement("div", "book-details");
+	addNewElement(details, "h4", "book-title", book.title);
+	addNewElement(details, "h4", "book-author", book.author);
+	addNewElement(details, "h4", "book-price", `Price: <span>$${book.price}</span>`);
+  card.appendChild(details);
+  const div = createElement("div", "book-buttons");
+	addNewButton(div, "Show more", togglePopup);
+	addNewButton(div, "Add to bag", addToBag);
+  card.appendChild(div);
 	container.appendChild(card);
 	id++;
 }
@@ -112,6 +117,17 @@ function createPopupWindow() {
 
 function createFooter() {
 	const footer = createElement("footer", "footer");
+  addNewElement(footer, "div", "footer__year", "&copy;&nbsp;2022");
+  const github = createElement("div", "footer__github");
+  const github_link = createLinkElement("", "https://github.com/ElenaByc");
+  addNewImageElement(github_link, "footer__github-logo", "icons/github.svg", "github logo");
+  github.appendChild(github_link);
+  footer.appendChild(github);
+  const rss = createElement("div", "footer__rss");
+  const rss_link = createLinkElement("", "https://www.rs.school/js-en/");
+  addNewImageElement(rss_link, "footer__rss-logo", "icons/rs_school_js.svg", "RSS logo");
+  rss.appendChild(rss_link);
+  footer.appendChild(rss);
 	return footer;
 }
 
