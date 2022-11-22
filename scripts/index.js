@@ -3,14 +3,14 @@ import {
 	createElementWithId,
 	addNewElement,
 	addNewImageElement,
+	addNewBookImageElement,
 	addNewButton,
 	addNewElementWithAction,
-  createLinkElement,
+	createLinkElement,
 } from "./elements-utils.js";
 
 const booksArray = [];
 const bagArray = [];
-const countArray = [];
 let id = 0;
 
 document.addEventListener("DOMContentLoaded", createBooksCatalogPage());
@@ -59,7 +59,12 @@ function createMain() {
 function createShoppingBag() {
 	//TODO: get current shopping bag from localStorage?
 	const bag = createElement("aside", "shopping-bag");
-	addNewElement(bag, "h3", "", "Your bag is empty");
+  createEmptyBag(bag);
+	return bag;
+}
+
+function createEmptyBag(bag) {
+  addNewElement(bag, "h3", "", "Your bag is empty");
 	addNewElement(bag, "p", "", "Drop books here\nor add them by clicking\n'Add to Bag` button");
 	return bag;
 }
@@ -88,16 +93,16 @@ function addBookCard(book, container) {
 	book.id = id;
 	booksArray.push(book);
 	const card = createElementWithId("div", "book-card", id);
-	addNewImageElement(card, "book-cover", book.image, book.title);
-  const details = createElement("div", "book-details");
+	addNewBookImageElement(card, "book-cover", book.image, book.title);
+	const details = createElement("div", "book-details");
 	addNewElement(details, "h4", "book-title", book.title);
 	addNewElement(details, "h4", "book-author", book.author);
 	addNewElement(details, "h4", "book-price", `Price: <span>$${book.price}</span>`);
-  card.appendChild(details);
-  const div = createElement("div", "book-buttons");
+	card.appendChild(details);
+	const div = createElement("div", "book-buttons");
 	addNewButton(div, "Show more", togglePopup);
 	addNewButton(div, "Add to bag", addToBag);
-  card.appendChild(div);
+	card.appendChild(div);
 	container.appendChild(card);
 	id++;
 }
@@ -117,17 +122,17 @@ function createPopupWindow() {
 
 function createFooter() {
 	const footer = createElement("footer", "footer");
-  addNewElement(footer, "div", "footer__year", "&copy;&nbsp;2022");
-  const github = createElement("div", "footer__github");
-  const github_link = createLinkElement("", "https://github.com/ElenaByc");
-  addNewImageElement(github_link, "footer__github-logo", "icons/github.svg", "github logo");
-  github.appendChild(github_link);
-  footer.appendChild(github);
-  const rss = createElement("div", "footer__rss");
-  const rss_link = createLinkElement("", "https://www.rs.school/js-en/");
-  addNewImageElement(rss_link, "footer__rss-logo", "icons/rs_school_js.svg", "RSS logo");
-  rss.appendChild(rss_link);
-  footer.appendChild(rss);
+	addNewElement(footer, "div", "footer__year", "&copy;&nbsp;2022");
+	const github = createElement("div", "footer__github");
+	const github_link = createLinkElement("", "https://github.com/ElenaByc");
+	addNewImageElement(github_link, "footer__github-logo", "icons/github.svg", "github logo");
+	github.appendChild(github_link);
+	footer.appendChild(github);
+	const rss = createElement("div", "footer__rss");
+	const rss_link = createLinkElement("", "https://www.rs.school/js-en/");
+	addNewImageElement(rss_link, "footer__rss-logo", "icons/rs_school_js.svg", "RSS logo");
+	rss.appendChild(rss_link);
+	footer.appendChild(rss);
 	return footer;
 }
 
@@ -138,7 +143,7 @@ function togglePopup(event) {
 	if (clickedCard) {
 		let book = booksArray.find((el) => el.id === Number(clickedCard.id));
 		let img = popup.getElementsByClassName("popup__img")[0];
-		img.style.backgroundImage = `url(./assets/${book.image})`;
+		img.style.backgroundImage = `url(./assets/images/${book.image})`;
 		let title = popup.getElementsByClassName("popup__title")[0];
 		title.innerHTML = book.title;
 		let author = popup.getElementsByClassName("popup__author")[0];
@@ -166,29 +171,44 @@ function displayShoppingBag() {
 	const bag = document.getElementsByClassName("shopping-bag")[0];
 	let total = 0;
 	bag.innerHTML = "";
-	bagArray.forEach((book) => {
-    addItemToBag(book, bag);
-    total += Number(book.price);
-  });
-	addNewElement(bag, "div", "line");
-	let totalDiv = createElement("div", "total");
-	addNewElement(totalDiv, "h4", "", "Order total:");
-	addNewElement(totalDiv, "h4", "item__price", `$${total}.00`);
-	bag.appendChild(totalDiv);
-  const checkout_btn = createElement("a", "button", "Confirm order");
-  checkout_btn.setAttribute("href", "./checkout.html");
-  bag.appendChild(checkout_btn);
+	if (bagArray.length === 0) {
+    createEmptyBag(bag);
+	} else {
+		bagArray.forEach((book, id) => {
+			addItemToBag(book, bag, id);
+			total += Number(book.price);
+		});
+		addNewElement(bag, "div", "line");
+		let totalDiv = createElement("div", "total");
+		addNewElement(totalDiv, "h4", "", "Order total:");
+		addNewElement(totalDiv, "h4", "item__price", `$${total}.00`);
+		bag.appendChild(totalDiv);
+		const checkout_btn = createElement("a", "button", "Confirm order");
+		checkout_btn.setAttribute("href", "./checkout.html");
+		bag.appendChild(checkout_btn);
+	}
 }
 
-function addItemToBag(book, bag) {
+function addItemToBag(book, bag, id) {
 	const bookDiv = createElement("div", "shopping-bag__item");
-	addNewImageElement(bookDiv, "item__img", book.image, book.title);
-  const titleAndAuthor = createElement("div", "item__title-author");
-  addNewElement(titleAndAuthor, "h4", "item__title", book.title);
-  addNewElement(titleAndAuthor, "h4", "item__author", book.author);
-  bookDiv.appendChild(titleAndAuthor);
-  addNewElement(bookDiv, "h4", "item__price", `$${book.price}`);
-  addNewElement(bookDiv, "div", "remove");
+	bookDiv.setAttribute("id", `item-${id}`);
+	addNewImageElement(bookDiv, "item__img", `images/${book.image}`, book.title);
+	const titleAndAuthor = createElement("div", "item__title-author");
+	addNewElement(titleAndAuthor, "h4", "item__title", book.title);
+	addNewElement(titleAndAuthor, "h4", "item__author", book.author);
+	bookDiv.appendChild(titleAndAuthor);
+	addNewElement(bookDiv, "h4", "item__price", `$${book.price}`);
+	addNewElementWithAction(bookDiv, "div", "remove", removeBook);
 	bag.appendChild(bookDiv);
 }
 
+function removeBook(event) {
+	const clickedBook = event.target.closest(".shopping-bag__item");
+	console.log(clickedBook);
+	if (clickedBook) {
+		let index = +clickedBook.id.substring(5);
+		console.log(index);
+		bagArray.splice(index, 1);
+		displayShoppingBag();
+	}
+}

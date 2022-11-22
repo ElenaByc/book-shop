@@ -350,8 +350,14 @@ p {
     height: 200px;
     width: auto;
     margin: 0 auto 15px;
+    transition: all 0.5s ease-in-out;
     cursor: pointer;
 }
+
+.book-cover:hover {
+    transform: scale(1.05);
+}
+
 
 .book-details {
     display: flex;
